@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback List</title>
+</head>
+<body>
+    <h1>Feedback List</h1>
+    {% if feedbacks %}
+        <ul>
+            {% for feedback in feedbacks %}
+                <li>
+                    **Event:** {{ feedback.event.title }}<br>
+                    **Feedback Text:** {{ feedback.feedback_text }}<br>
+                    **Published By:** {{ feedback.user.username }}<br>
+                    **Published Date:** {{ feedback.publish_date }}
+                    <a href="{% url 'feedback_detail' feedback.id %}">View Details</a>
+                    <a href="{% url 'feedback_delete' feedback.id %}">Delete</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No feedback found.</p>
+    {% endif %}
+</body>
+</html>

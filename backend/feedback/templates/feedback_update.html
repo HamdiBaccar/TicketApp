@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Feedback</title>
+</head>
+<body>
+    <h1>Update Feedback</h1>
+    {% if feedback %}
+        <form method="post">
+            {% csrf_token %}
+            <label for="feedback_text">Feedback Text:</label>
+            <textarea name="feedback_text" id="feedback_text" rows="5">{{ feedback.feedback_text }}</textarea><br>
+            <button type="submit">Update Feedback</button>
+        </form>
+    {% else %}
+        <p>Feedback not found.</p>
+    {% endif %}
+</body>
+</html>

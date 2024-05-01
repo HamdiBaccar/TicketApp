@@ -1,0 +1,66 @@
+<div class="container-fluid p-3 pt-5" style="height:100%; color:white; overflow-y:scroll">
+  <div class="register py-4">
+    <h1 class="text-center mb-3">Create an account</h1>
+
+    <div class="inputs">
+      <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input formControlName="email" type="email" class="form-control" id="email" placeholder="Enter email">
+          <div *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)" class="text-danger">
+            <div *ngIf="registerForm.get('email')?.errors?.['required']">Email is required</div>
+            <div *ngIf="registerForm.get('email')?.errors?.['email']">Please enter a valid email address</div>
+          </div>
+        </div>
+        <div class="d-flex align-items-center justify-content-between" style="gap:5px">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input formControlName="username" type="text" class="form-control" id="username" placeholder="Choose a username">
+          <div *ngIf="registerForm.get('username')?.invalid && (registerForm.get('username')?.dirty || registerForm.get('username')?.touched)" class="text-danger">
+            <div *ngIf="registerForm.get('username')?.errors?.['required']">Username is required</div>
+          </div>
+        </div>
+
+        <div class="form-group" style="width: 30%;">
+          <label for="age">Age</label>
+          <input formControlName="age" type="number" class="form-control" id="age" maxlength="2" placeholder="Age">
+          <div *ngIf="registerForm.get('age')?.invalid && (registerForm.get('age')?.dirty || registerForm.get('age')?.touched)" class="text-danger">
+            <div *ngIf="registerForm.get('age')?.errors?.['required']">Age is required</div>
+          </div>
+        </div>
+</div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input formControlName="password" type="password" class="form-control" id="password" placeholder="Create a strong password">
+          <div *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)" class="text-danger">
+            <div *ngIf="registerForm.get('password')?.errors?.['required']">Password is required</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm password</label>
+          <input formControlName="confirmPassword" type="password" class="form-control" id="confirmPassword" placeholder="Re-type your password">
+          <div *ngIf="registerForm.get('confirmPassword')?.invalid && (registerForm.get('confirmPassword')?.dirty || registerForm.get('confirmPassword')?.touched)" class="text-danger">
+            <div *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">Please confirm your password</div>
+            <div *ngIf="registerForm.hasError('passwordMismatch') && (registerForm.get('confirmPassword')?.dirty || registerForm.get('confirmPassword')?.touched)" class="text-danger">Passwords do not match</div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="phone">Phone number</label>
+            <input formControlName="phone" type="text" class="form-control" id="phone" placeholder="Enter your phone number">
+          </div>
+        </div>
+
+        <button type="submit" class="button d-flex justify-content-center align-items-center py-1 px-2 ">Create my account</button>
+        <p style="text-align: center; margin-top:18px; font-size:15px">Already a member?<a href="../login" style="text-decoration:none; color:#6236FF; font-weight: 700;margin-left:3px">Log in</a></p>
+      </form>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-center">
+      <div class="t1"></div>
+      <div class="t2"></div>
+    </div>
+  </div>
+</div>

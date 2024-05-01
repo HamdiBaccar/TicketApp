@@ -1,0 +1,261 @@
+// @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+// .avatar-container {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   flex-direction: column;
+//   margin-bottom: 20px;
+//   background-color:#1D1919;
+// }
+
+// .avatar-container ion-avatar {
+//   width: 100px;
+//   height: 100px;
+//   margin-top: 50px;
+// }
+
+// .avatar-container ion-label {
+//   margin-top: 10px;
+//   font-weight: bold;
+// }
+
+//   .avatar img {
+//     width: 40%; /* Adjust avatar image size as needed */
+//     height: 40%; /* Adjust avatar image size as needed */
+//     border-radius: 50%; /* Make the image round */
+//     margin-bottom: 20px; /* Add space below the avatar */
+//   }
+//   .adding-layout {
+//     background-image: url('../../../../assets/event.jpeg');
+//     background-size: cover;
+//     background-position: center;
+//     background-repeat: no-repeat;
+//     margin-bottom: 10px;
+//     height: 70%; /* Adjusted height */
+//     width: 95%;
+//     background-color:#1D1919;
+//     box-shadow: 0px 4px 4px 0px #00000040;
+//     border-radius: 10px;
+//     padding: 20px;
+//     position: relative; /* Add this line */
+//   top: -50px; /* Adjust as needed to move the form up */
+//   }
+
+//   .buttons {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: stretch;
+//     gap: 5px;
+//     height: auto; /* Remove height constraint */
+//   }
+//   ion-content {
+//     overflow: hidden; /* Prevent scrolling */
+//   }
+
+//   .buttons ion-button {
+//     flex: 1; /* Ensure buttons grow to fill the available space */
+//   }
+//   .adding-layout ion-input[name="title"]{
+//   width: 95%;
+//   height: 10px !important; /* Adjusted height to consider margins */
+
+//   padding: 10px; /* Add padding for better visual appearance */
+//   border-radius: 15px;
+//   border: 1px solid #FFFFFF;
+//   background-color: rgba(255, 255, 255, 0.02);
+//   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.4);
+// }
+//   ion-select[name="category"] {
+//     width: 95%;
+//     height: 30px !important; /* Adjusted height to consider margins */
+
+//     padding: 10px; /* Add padding for better visual appearance */
+//     border-radius: 15px;
+//     border: 1px solid #FFFFFF;
+//     background-color: rgba(255, 255, 255, 0.02);
+//     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.4);
+//   }
+//   ion-input[name="price"],
+//   ion-input[name="tickets"] {
+//     width: 95%;
+//     height: 24px; /* Reduced height of the inputs */
+
+//     padding: 8px; /* Adjusted padding for better visual appearance */
+//     border-radius: 15px;
+//     border: 1px solid #FFFFFF;
+//     background-color: rgba(255, 255, 255, 0.02);
+//     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.4);
+//   }
+//   ion-input[name="date"] {
+//     width: 95%;
+//     height: 30px !important; /* Adjusted height to consider margins */
+
+//     padding: 10px; /* Add padding for better visual appearance */
+//     border-radius: 15px;
+//     border: 1px solid #FFFFFF;
+//     background-color: rgba(255, 255, 255, 0.02);
+//     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.4);
+//   }
+//   ion-input[name="time"] {
+//     width: 95%;
+//     height: 30px !important; /* Adjusted height to consider margins */
+
+//     padding: 10px; /* Add padding for better visual appearance */
+//     border-radius: 15px;
+//     border: 1px solid #FFFFFF;
+//     background-color: rgba(255, 255, 255, 0.02);
+//     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.4);
+//   }
+//   ion-input[name="place"] {
+//     width: 95%;
+//     height: 30px !important; /* Adjusted height to consider margins */
+
+//     padding: 10px; /* Add padding for better visual appearance */
+//     border-radius: 15px;
+//     border: 1px solid #FFFFFF;
+//     background-color: rgba(255, 255, 255, 0.02);
+//     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.4);
+//   }
+//   h2{
+//     font-family: 'Poppins', sans-serif ;
+//     font-size: 17px ;
+//     font-weight: 700;
+//     line-height: 36px;
+//     text-align: left;
+//     margin-bottom: 20px;
+//     margin-top: 20px;
+//     margin-left: 10px;
+// }
+// .events{
+//   display: flex;
+//   align-items: center;
+// }
+// #plus{
+//   margin-left: 180px;
+// }
+// ion-button[name="create"],
+// ion-button[name="cancel"] {
+//   --background: transparent; /* Set background color to transparent */
+//   --color: white; /* Set text color to white */
+//   border: 1px solid white;
+//   border-radius: 15px;
+// }
+// ion-button[name="create"]:hover,
+// ion-button[name="cancel"]:hover {
+//   --background-hover: white;
+//   --color-hover: black;
+// }
+// .fa-circle-plus{
+//   font-size: 20px;
+//   margin-left: 40px;
+// }
+// .fa-bars {
+//   color: white;
+//   position: absolute;
+//   font-size: 26px;
+//   top: 20px; /* Adjust as needed */
+//   left: 10px; /* Adjust as needed */
+//   z-index: 1; /* Ensure the icon appears above the image */
+// }
+
+.form-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  // background-color: #f9f9f9;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="number"],
+select
+{
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.primary-button {
+  background-color: #0C4E81;
+}
+
+.secondary-button {
+  background-color: #555;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.button-container button {
+  margin-bottom: 6px;
+  color: white;
+  padding: 6px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.button-container button:hover {
+  opacity: 0.8;
+}
+
+
+
+
+/* Modal CSS */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+
+

@@ -1,0 +1,16 @@
+.bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    background-color:#1D1919;
+  }
+
+  .fa-home, .fa-heart, .fa-calendar-days, .fa-ticket, .fa-cart-shopping {
+    font-size: 25px;
+  }
+

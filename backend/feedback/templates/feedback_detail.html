@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback Detail</title>
+</head>
+<body>
+    <h1>Feedback Detail</h1>
+    {% if feedback %}
+        <p>**Event:** {{ feedback.event.title }}</p>
+        <p>**Feedback Text:** {{ feedback.feedback_text }}</p>
+        <p>**Published By:** {{ feedback.user.username }}</p>
+        <p>**Published Date:** {{ feedback.publish_date }}</p>
+    {% else %}
+        <p>Feedback not found.</p>
+    {% endif %}
+</body>
+</html>

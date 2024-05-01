@@ -1,0 +1,56 @@
+
+
+.container-fluid{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../../assets/meet.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.register{
+  padding: 15px 15px;
+  height: 68%;
+  width: 97%;
+  background: rgba(255, 255, 255, 0.244);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+input{
+  height: 30px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.button{
+  background-color: #6236FF;
+  border-radius: 6px;
+  color:white;
+  margin-top: 30px;
+  width: 100%;
+}
+.form-group{
+  margin-bottom: 8px;
+}
+.t1{
+  height: 8px;
+  width: 30px;
+  border-radius: 6px;
+  background-color: #6236FF;
+  margin-right: 4px;
+  margin-top: 20px;
+}
+.t2{
+  height: 8px;
+  width: 30px;
+  border-radius: 6px;
+  background-color: #dad7e4;
+  margin-top: 20px;
+}
+.inputs{
+  margin-top: 50px;
+}

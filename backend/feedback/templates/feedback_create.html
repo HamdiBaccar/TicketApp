@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Feedback</title>
+</head>
+<body>
+    <h1>Create Feedback</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="event_id">Event:</label>
+        <select name="event_id" id="event_id">
+            <option value="">Select Event</option>
+        </select><br>
+        <label for="feedback_text">Feedback Text:</label>
+        <textarea name="feedback_text" id="feedback_text" rows="5"></textarea><br>
+        <button type="submit">Submit Feedback</button>
+    </form>
+</body>
+</html>
