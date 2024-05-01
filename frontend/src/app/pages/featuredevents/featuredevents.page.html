@@ -29,7 +29,7 @@
     <!-- Container for featured events with horizontal scrolling -->
     <div class="featured-container">
       <!-- Loop through the events and display them horizontally -->
-      <div *ngFor="let event of events" class="featured-event" (click)="navigateToEventDetails(event.id)" [style.background-image]="'url(\'../../../assets/ev' + (event.id % 2 + 1) + '.png\')'">
+      <div *ngFor="let event of events" class="featured-event" (click)="navigateToEventDetails(event.id)" [style.background-image]="'url(' + event.image_base64 + ')'">
         <div class="d-flex justify-content-between align-items-center">
           <div class="catg"><span>{{ event.category }}</span></div>
           <div class="icon-container">

@@ -16,7 +16,7 @@
   
   <div class="form-group">
     <label for="event-image">Event Image</label>
-    <input type="file" id="event-image" formControlName="eventImage" accept="image/*" (change)="onFileSelected($event)">
+    <input type="file" id="event-image" formControlName="image_base64" accept="image/*" (change)="onFileSelected($event)">
     <p style="font-size: 10px; font-weight: 200;">Images accepted must be around: 500 x 250</p>
     <img [src]="imagePreview" alt="Event Image" style="max-width: 100%;" *ngIf="imagePreview">
   </div>
@@ -24,12 +24,12 @@
   <div class="d-flex align-items-center justify-content-between" style="gap:5px">
     <div class="form-group" style="width:100%">
       <label for="ticket-price">Ticket price</label>
-      <input type="number" id="ticket-price" formControlName="ticketPrice" placeholder="Enter ticket price" required>
+      <input type="number" id="ticket-price" formControlName="ticket_unit_price" placeholder="Enter ticket price" required>
     </div>
 
     <div class="form-group" style="width:100%">
       <label for="available-seats">Available seats</label>
-      <input type="number" id="available-seats" formControlName="availableTickets" placeholder="Enter available seats" required>
+      <input type="number" id="available-seats" formControlName="available_tickets" placeholder="Enter available seats" required>
     </div>
   </div>
   
@@ -54,11 +54,11 @@
   <div class="d-flex justify-content-between align-items-center" style="gap:8px">
     <div class="form-group" style="width: 60%;">
       <label for="start-date">Start Date</label>
-      <input type="date" id="start-date" formControlName="startDate" required>
+      <input type="date" id="start-date" formControlName="date" required>
     </div>
     <div class="form-group" style="width: 40%;">
       <label for="launch-time">Launch Time</label>
-      <input type="time" id="launch-time" formControlName="launchTime" required>
+      <input type="time" id="launch-time" formControlName="launch_time" required>
     </div>
   </div>
   
@@ -125,7 +125,6 @@
     <button type="button" class="secondary-button">Discard event</button>
   </div>
 </form>
-
   </div>
 
   <app-bottom-bar></app-bottom-bar>

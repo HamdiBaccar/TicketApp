@@ -29,9 +29,25 @@ class Event(models.Model):
     launch_time = models.TimeField()
     available_tickets = models.IntegerField()
     ticket_unit_price = models.DecimalField(max_digits=10, decimal_places=2)
-    status = models.CharField(max_length=20, choices=[('upcoming', 'Upcoming'), ('finished', 'Finished')])
+    status = models.CharField(default='upcoming',max_length=20, choices=[('upcoming', 'Upcoming'), ('finished', 'Finished')])
     people_attending = models.ManyToManyField(User, related_name='events_attending', blank=True)
     category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, null=True, blank=True)
     age_category = models.CharField(max_length=100, choices=AGE_CATEGORY_CHOICES, null=True, blank=True)
     is_approved = models.BooleanField(default=False)
+    image_base64 = models.TextField(null=True, blank=True)  # Field to store image as base64 string
+
+    
+
+    def delete(self, *args, **kwargs):
+        # Delete the associated image file when the object is deleted
+        if self.image:
+            self.image.delete()
+        super().delete(*args, **kwargs)
+
+    @property
+    def image_data_uri(self):
+        # Generate data URI for displaying the image
+        if self.image_base64:
+            return f"data:image/png;base64,{self.image_base64}"
+        return None
 
