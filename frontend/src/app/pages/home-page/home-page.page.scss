@@ -1,6 +1,5 @@
 .container-fluid{
   padding: 30px 20px;
-  background-color:#1D1919;
   color:white;
   height: 100%;
 }
@@ -105,5 +104,142 @@ ion-searchbar{
   gap:8px
 }
 
+.container-fluid{
+  padding: 30px 20px;
+  color:white;
+  height: 100%;
+}
+.header{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header i{
+  font-size:29px;
+}
+.header img{
+  border-radius: 50%;
+  height: 31px;
+  width: 31px;
+}
+.header span{
+  font-weight: 700;
+  font-size:20px;
+  margin-bottom:2px
+}
+ion-searchbar{
+  width:100%;
+  --background:white;
+  color:rgb(255, 255, 255);
+  margin-top: 30px;
+  --border-radius:10px;
+  color:black;
+  --placeholder-font-weight: 500;
+}
+.category-item{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.icon-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #505050;
+  border-radius: 10px;
+  padding: 14px 8px;
+  width: 70px;
+  height: 70px;
+}
+.icon-box i{
+  font-size: 26px;
+}
+ion-item-divider{
+  margin-bottom: 20px;
+}
+.divider{
+  width:100%;
+  background-color:white;
+  height:2px;
+  margin:4px 0px;
+  border-radius: 70%;
+}
+/**************************************/
+.container-fluid {
+  height: 100vh; /* Set full viewport height */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Prevent overflow from affecting the entire page */
+}
+
+
+
+.categories-list {
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: calc(100vh - 250px); /* Adjust the max height based on the rest of the layout */
+  padding: 0 20px;
+}
+
+.category-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.icon-box {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ddd;
+  border-radius: 50%;
+}
+
+.divider {
+  border-top: 1px solid #ccc;
+  margin: 0;
+}
+
+/* Adjustments for specific elements */
+.category-item span {
+  font-weight: 700;
+  font-size: 20px;
+  margin-left: 16px;
+}
+
+.category-item i.fa-chevron-right {
+  font-size: 20px;
+  color: #ccc;
+}
+/* event-search.page.scss */
+
+/* Set background color of ion-list and ion-item to white */
+ion-list {
+  --background: rgba(255, 255, 255, 0.244);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+/* Set background color of ion-item to white */
+
+ion-item {
+  color: white; /* Change text color to black */
+}
+
+/* Remove box-shadow from ion-item */
+ion-item {
+  --box-shadow: none;
+}
+
+/* Remove border from ion-item */
+
+
+
+/* Add any other custom styles as needed */
 
 /********************************************/

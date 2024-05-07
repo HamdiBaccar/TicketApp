@@ -1,7 +1,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<div class="container-fluid p-3" style="overflow-y: scroll; padding-top: 60px!important;">
+<div class="container-fluid p-3 purple" style="overflow-y: scroll; padding-top: 60px!important;">
 
   <div class="header">
     <div>
@@ -9,13 +9,20 @@
     </div>
     <div class="d-flex align-items-center justify-content-center">
       <i class="fa-solid fa-bell me-2"></i>
-      <img class="mb-1" src="../../../assets/avatar.png" alt="" routerLink="/user"style="width: 50px; height: 50px;">
+      <img class="mb-1" [src]="userId.image_base64" alt="" routerLink="/user" style="width: 40px; height: 40px;">
+
     </div>
   </div>
-  <p class="fs-6" style="font-weight: 300;"><i class="fa-solid fa-location-dot me-2 fs-6"></i>{{userId.governorate}} , Tunisia</p>
+  <p class="fs-6" style="font-weight: 300;"><i class="fa-solid fa-location-dot me-2 fs-6"></i>Tunis</p>
 
 
-  <ion-searchbar class="p-0" animated="true" placeholder="Looking for an event?"></ion-searchbar>
+  <ion-searchbar class="p-0" [(ngModel)]="searchTerm" (ionInput)="filterEvents()" animated="true" placeholder="Looking for an event?"></ion-searchbar>
+
+<ion-list *ngIf="filteredEvents.length > 0">
+  <ion-item *ngFor="let event of filteredEvents" (click)="selectEvent(event)">
+    {{ event.title }}
+  </ion-item>
+</ion-list>
 <!-------------------------------------------------------------------------------------------------->
   <div class="featured-section mt-5">
     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -24,7 +31,7 @@
     </div>
     <div class="featured-container">
       <!-- Loop through the first two events in the events array -->
-      <div *ngFor="let event of events.slice(0, 2)" class="featured-event" (click)="navigateToEventDetails(event.id)" [style.background-image]="'url(\'../../../assets/ev' + (event.id % 2 + 1) + '.png\')'">
+      <div *ngFor="let event of events.slice(0, 2)" class="featured-event" (click)="navigateToEventDetails(event)" [style.background-image]="'url(' + event.image_base64 + ')'">
         <div class="d-flex justify-content-between align-items-center">
           <div class="catg"><span>{{ event.category }}</span></div>
           <div class="icon-container">
@@ -48,27 +55,27 @@
 
     <div class="categories-container">
 
-      <div class="category" routerLink="/categories/movies">
+      <div class="category primary-button" routerLink="/categories/movies">
         <i class="fa-solid fa-couch"></i>
         <span>Movies</span>
       </div>
 
-      <div class="category" routerLink="/categories/games">
+      <div class="category primary-button" routerLink="/categories/games">
         <i class="fa-solid fa-trophy"></i>
         <span>Games</span>
       </div>
 
-      <div class="category" routerLink="/categories/parties">
+      <div class="category primary-button" routerLink="/categories/parties">
         <i class="fa-solid fa-gift"></i>
         <span>Parties</span>
       </div>
 
-      <div class="category" routerLink="/categories/art">
+      <div class="category primary-button" routerLink="/categories/art">
         <i class="fa-solid fa-masks-theater"></i>
         <span>Art</span>
       </div>
 
-      <div class="category" routerLink="/categories/meet">
+      <div class="category primary-button" routerLink="/categories/meet">
         <i class="fa-solid fa-headset"></i>
         <span>Meet</span>
       </div>
@@ -76,29 +83,28 @@
     </div>
   </div>
 <!--------------------------------------------------------------------------------------------->
-  <div class="events-for-you-section mt-5" style="margin-bottom:60px">
-    <div class="d-flex justify-content-between align-items-center">
-      <h3 class="mb-3 fs-2">Your booked events</h3>
-      <i class="fa fa-chevron-right" routerLink="/bookedevents"></i>
-    </div>
+<div class="events-for-you-section mt-5" style="margin-bottom:60px">
+  <div class="d-flex justify-content-between align-items-center">
+    <h3 class="mb-3 fs-2">Your booked events</h3>
+    <i class="fa fa-chevron-right" routerLink="/bookedevents"></i>
+  </div>
 
-    <!-- Loop through the first two events in the events array -->
-    <div class="featured-container mb-2">
-      <div *ngFor="let event of bookedEvents.slice(0, 2)" class="featured-event" (click)="navigateToEventDetails(event.id)" [style.background-image]="'url(\'../../../assets/ev' + (event.id % 2 + 1) + '.png\')'">
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="catg"><span>{{ event.category }}</span></div>
-          <div class="icon-container">
-            <i class="fa fa-heart"></i>
-          </div>
+  <!-- Loop through the first two events in the events array -->
+  <div class="featured-container mb-2">
+    <div *ngFor="let event of bookedEventsDetails.slice(0, 2)" class="featured-event" (click)="navigateToEventDetails(event)" [style.background-image]="'url(' + event.image_base64 + ')'">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="catg"><span>{{ event.category }}</span></div>
+        <div class="icon-container">
+          <i class="fa fa-heart"></i>
         </div>
-        <div class="bot-card">
-          <p class="m-0">{{ event.title }}</p>
-          <span>{{ event.date | date:'dd MMMM yyyy' }}</span>
-        </div>
+      </div>
+      <div class="bot-card">
+        <p class="m-0">{{ event.title }}</p>
+        <span>{{ event.date | date:'dd MMMM yyyy' }}</span>
       </div>
     </div>
   </div>
-
+</div>
 
 
 

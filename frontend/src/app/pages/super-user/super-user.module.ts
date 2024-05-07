@@ -9,6 +9,7 @@ import { SuperUserPageRoutingModule } from './super-user-routing.module';
 import { SuperUserPage } from './super-user.page';
 
 import { SharedModule } from 'src/app/shared/shared.module';
+
 @NgModule({
   imports: [
     CommonModule,

@@ -4,14 +4,16 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from 'src/app/services/event.service';
 import {CartService} from "../../../services/cart.service";
-
+import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-event-details',
   templateUrl: './event-details.page.html',
   styleUrls: ['./event-details.page.scss'],
 })
 export class EventDetailsPage implements OnInit {
-
+  
+  userId:any;
+event:any;
   events: any[] = [];
   eventId!: number;
   foundEvent!:any
@@ -21,12 +23,12 @@ export class EventDetailsPage implements OnInit {
   addToWishlistButtonClicked: boolean = false;
   showMessage: boolean = false;
   message_displayed!: string
-  constructor(private activatedRoute: ActivatedRoute, private eventService: EventService, private cartService: CartService, private router: Router) { }
+  constructor(private activatedRoute: ActivatedRoute, private eventService: EventService, private cartService: CartService, private router: Router,private userService:UserService) { }
 
   ngOnInit(): void {
     // Get the eventId from the route parameters
     this.eventId = +this.activatedRoute.snapshot.params['eventId']; // Convert to number using +
-
+    this.event = history.state.event;
     // Fetch events and find the event with matching eventId
     this.eventService.getEvents().subscribe(
       (events: any[]) => {
@@ -58,35 +60,25 @@ export class EventDetailsPage implements OnInit {
 
   addToCartClicked() {
     this.addToCartButtonClicked = !this.addToCartButtonClicked;
+    const eventIdParam = this.activatedRoute.snapshot.paramMap.get('eventId');
+const eventId = eventIdParam ? parseInt(eventIdParam, 10) : 0; // Default value of 0
 
-    if (this.addToCartButtonClicked) {
-      // Add event to cart using CartService
-      const cartData = {
-        // Include necessary data for adding to cart (e.g., event ID, quantity)
-        event: this.foundEvent.id,
-        quantity: 1, // Assuming adding 1 ticket by default
-      };
-
-      this.cartService.addToCart(cartData).subscribe(
-        (response) => {
-          console.log('Event added to cart:', response);
-          this.message_displayed = 'Added to Cart!';
-          this.showMessage = true;
-          setTimeout(() => {
-            this.showMessage = false;
-          }, 2000);
-        },
-        (error) => {
-          console.error('Error adding event to cart:', error);
-          this.message_displayed = 'Error adding to cart!';
-          this.showMessage = true;
-          setTimeout(() => {
-            this.showMessage = false;
-          }, 2000);
-        }
-      );
-    }
+    const userId = this.userService.getUserDataFromToken();
+    
+    // Add the event to the user's cart
+    this.userService.addToCart(userId.id, eventId).subscribe(
+      (response) => {
+        console.log('Event added to cart:', response);
+        // Handle success (e.g., display success message)
+      },
+      (error) => {
+        console.error('Error adding event to cart:', error);
+        // Handle error (e.g., display error message)
+      }
+    );
   }
+  
+  
 
   toggleWishlist() {
     // Toggle the addToWishlistButtonClicked flag
@@ -117,6 +109,7 @@ export class EventDetailsPage implements OnInit {
   // Navigate to the event-booking page
   this.router.navigate(['/book-event']);
 }
+
 
 
 

@@ -1,6 +1,5 @@
 .container-fluid{
   padding: 30px 20px;
-  background-color:#1D1919;
   color:white;
   height: 100%;
 }
@@ -80,5 +79,29 @@ ion-searchbar{
   gap:8px;
   margin-bottom:30px
 }
+ion-list {
+  --background: rgba(255, 255, 255, 0.244);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+/* Set background color of ion-item to white */
+
+ion-item {
+  color: white; /* Change text color to black */
+}
+
+/* Remove box-shadow from ion-item */
+ion-item {
+  --box-shadow: none;
+}
+
+/* Remove border from ion-item */
+
+
+
+/* Add any other custom styles as needed */
 
 /*******************************************************/

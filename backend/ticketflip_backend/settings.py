@@ -159,3 +159,11 @@ CORS_ALLOW_ALL_HEADERS=True
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:8100',
 ]
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS'
+]

@@ -1,18 +1,21 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<div class="container-fluid">
+<div class="container-fluid purple">
 
-  <div class="header">
-    <i class="fa-solid fa-bars"></i>
-    <span>20th June 2024</span>
-    <div class="d-flex align-items-center justify-content-center">
-      <i class="fa-solid fa-bell me-2"></i>
-      <img class="mb-1" src="../../../assets/kam.jpeg" alt="">
-    </div>
+  <div class="header d-flex align-items-center justify-content-between">
+    <i class="fa-solid fa-bell me-2"></i>
+    <span>{{ currentDate | date: 'dd-MM-yyyy' }}</span>
+    
+    <img class="mb-1" [src]="userId.image_base64" alt="">
   </div>
 
-  <ion-searchbar class="p-0" animated="true" placeholder="Looking for an event?"></ion-searchbar>
+  <ion-searchbar class="p-0" [(ngModel)]="searchTerm" (ionInput)="filterEvents()" animated="true" placeholder="Looking for an event?"></ion-searchbar>
 
+<ion-list *ngIf="filteredEvents.length > 0">
+  <ion-item *ngFor="let event of filteredEvents" (click)="selectEvent(event)">
+    {{ event.title }}
+  </ion-item>
+</ion-list>
   <div class="d-flex align-items-center justify-content-start mb-2">
     <i class="fa-solid fa-circle-chevron-left me-3 fs-3" routerLink="/home-page"></i>
     <h3 class="fw-600 mt-4 mb-4">Categories</h3>
@@ -21,7 +24,7 @@
     <div class="category-item" routerLink="/categories/movies">
       <div class="d-flex justify-content-start align-items-center">
         <div class="icon-box">
-          <i class="fa-solid fa-video" style="color:#c7845a"></i>
+          <i class="fa-solid fa-video gradient" style="color:#c7845a"></i>
         </div>
         <span class="ms-4 mb-2" style="font-weight: 700; font-size: 20px;">Movies</span>
       </div>
@@ -32,7 +35,7 @@
     <div class="category-item" routerLink="/categories/games">
       <div class="d-flex justify-content-start align-items-center">
         <div class="icon-box">
-          <i class="fa-solid fa-gamepad" style="color:#A397AF"></i>
+          <i class="fa-solid fa-gamepad gradient" style="color:#A397AF"></i>
         </div>
         <span class="ms-4 mb-2" style="font-weight: 700; font-size: 20px;">Games</span>
       </div>
@@ -43,7 +46,7 @@
     <div class="category-item" routerLink="/categories/parties">
       <div class="d-flex justify-content-start align-items-center">
         <div class="icon-box">
-          <i class="fa-solid fa-champagne-glasses" style="color:#B59C3D"></i>
+          <i class="fa-solid fa-champagne-glasses gradient" style="color:#B59C3D"></i>
         </div>
         <span class="ms-4 mb-2" style="font-weight: 700; font-size: 20px;">Parties</span>
       </div>
@@ -54,7 +57,7 @@
     <div class="category-item" routerLink="/categories/art">
       <div class="d-flex justify-content-start align-items-center">
         <div class="icon-box">
-          <i class="fa-solid fa-palette" style="color:#8F4633"></i>
+          <i class="fa-solid fa-palette gradient" style="color:#8F4633"></i>
         </div>
         <span class="ms-4 mb-2" style="font-weight: 700; font-size: 20px;">Art</span>
       </div>
@@ -65,7 +68,7 @@
     <div class="category-item" routerLink="/categories/meet">
       <div class="d-flex justify-content-start align-items-center">
         <div class="icon-box">
-          <i class="fa-solid fa-handshake" style="color:#A8516E"></i>
+          <i class="fa-solid fa-handshake gradient" style="color:#A8516E"></i>
         </div>
         <span class="ms-4 mb-2" style="font-weight: 700; font-size: 20px;">Meets</span>
       </div>
@@ -76,7 +79,7 @@
     <div class="category-item" routerLink="/categories/music">
       <div class="d-flex justify-content-start align-items-center">
         <div class="icon-box">
-          <i class="fa-solid fa-icons" style="color:#2C3E50"></i>
+          <i class="fa-solid fa-icons gradient" style="color:#2C3E50"></i>
         </div>
         <span class="ms-4 mb-2" style="font-weight: 700; font-size: 20px;">Music</span>
       </div>
@@ -87,7 +90,7 @@
     <div class="category-item" routerLink="/categories/education">
       <div class="d-flex justify-content-start align-items-center">
         <div class="icon-box">
-          <i class="fa-solid fa-chalkboard-user" style="color:#5F7143"></i>
+          <i class="fa-solid fa-chalkboard-user gradient" style="color:#5F7143"></i>
         </div>
         <span class="ms-4 mb-2" style="font-weight: 700; font-size: 20px;">Education</span>
       </div>
@@ -98,7 +101,7 @@
     <div class="category-item">
       <div class="d-flex justify-content-start align-items-center">
         <div class="icon-box">
-          <i class="fa-solid fa-headset" style="color:#B84F42"></i>
+          <i class="fa-solid fa-headset gradient" style="color:#B84F42"></i>
         </div>
         <span class="ms-4 mb-2" style="font-weight: 700; font-size: 20px;">Live Stream</span>
       </div>
@@ -109,7 +112,7 @@
     <div class="category-item">
       <div class="d-flex justify-content-start align-items-center">
         <div class="icon-box">
-          <i class="fa-solid fa-medal" style="color:#59656D"></i>
+          <i class="fa-solid fa-medal gradient" style="color:#59656D"></i>
         </div>
         <span class="ms-4 mb-2" style="font-weight: 700; font-size: 20px;">Sports</span>
       </div>
@@ -120,7 +123,7 @@
     <div class="category-item">
       <div class="d-flex justify-content-start align-items-center">
         <div class="icon-box">
-          <i class="fa-solid fa-hand-holding-dollar" style="color:#6B336B"></i>
+          <i class="fa-solid fa-hand-holding-dollar gradient" style="color:#6B336B"></i>
         </div>
         <span class="ms-4 mb-2" style="font-weight: 700; font-size: 20px;">Philanthropic</span>
       </div>
@@ -131,7 +134,7 @@
     <div class="category-item">
       <div class="d-flex justify-content-start align-items-center">
         <div class="icon-box">
-          <i class="fa-solid fa-clipboard-question" style="color:#336B6B"></i>
+          <i class="fa-solid fa-clipboard-question gradient" style="color:#336B6B"></i>
         </div>
         <span class="ms-4 mb-2" style="font-weight: 700; font-size: 20px;">Other</span>
       </div>

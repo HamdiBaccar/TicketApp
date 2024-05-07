@@ -86,10 +86,17 @@ const routes: Routes = [
  {
   path: 'bookedevents',
   loadChildren: () => import('./pages/bookedevents/bookedevents.module').then( m => m.BookedeventsPageModule)
-},  {
+},
+  {
     path: 'wish-list',
     loadChildren: () => import('./pages/wish-list/wish-list.module').then( m => m.WishListPageModule)
-  }
+  },
+  {
+    path: 'payment',
+    loadChildren: () => import('./pages/payment/payment.module').then( m => m.PaymentPageModule)
+  },
+
+
 
 
 

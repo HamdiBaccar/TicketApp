@@ -1,4 +1,4 @@
-from user.views import UserListCreateAPIView, UserRetrieveUpdateDestroyAPIView,UserRegisterAPIView,UserLoginAPIView,UserLogoutAPIView
+from user.views import UserListCreateAPIView, UserRetrieveUpdateDestroyAPIView,UserRegisterAPIView,UserLoginAPIView,UserLogoutAPIView,UserListView,UserDetailView,add_event_to_hosted_events,get_booked_events,get_hosted_events,UserUpdateView,add_to_cart,get_cart
 from django.urls import path
 from event import views as event_views
 from booking import views as booking_views
@@ -13,6 +13,14 @@ from rating.views import rating_detail, rating_create, rating_update, rating_del
 
 urlpatterns = [
     path('api/users', UserListCreateAPIView.as_view(), name='user-list-create'),
+    path('api/users/<int:user_id>/hosted-events/add/', add_event_to_hosted_events, name='add_event_to_hosted_events'),
+    path('users/<int:pk>/', UserUpdateView.as_view(), name='user-update'),
+    path('users/cart/<int:user_id>/', get_cart, name='get_cart'),
+    path('users/<int:user_id>/add_to_cart/', add_to_cart, name='add_to_cart'),
+    path('api/get_booked_events/<int:user_id>/', get_booked_events, name='get_booked_events'),
+    path('api/get_hosted_events/<int:user_id>/', get_hosted_events, name='get_hosted_events'),
+    path('api/list/users/', UserListView.as_view(), name='user-list'),
+    path('api/list/users/<int:pk>/', UserDetailView.as_view(), name='user-detail'),
     path('api/users/<int:pk>', UserRetrieveUpdateDestroyAPIView.as_view(), name='user-retrieve-update-destroy'),
     path('api/auth/register/', UserRegisterAPIView.as_view(), name='user-register'),
     path('api/auth/login/', UserLoginAPIView.as_view(), name='user-login'),

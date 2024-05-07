@@ -24,3 +24,16 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+.primary-button {
+    // background-color: #0C4E81;
+    background: linear-gradient(109.8deg, rgb(238, 9, 121) 42.8%, rgb(255, 106, 0) 83.3%);
+  }
+  .gradient{
+    background: linear-gradient(109.8deg, rgb(238, 9, 121) 20.8%, rgb(255, 106, 0) 83.3%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .purple{
+    background-color: #1B1834;
+  }

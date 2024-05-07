@@ -1,5 +1,5 @@
-<div class="container-fluid p-3 pt-5" style="overflow-y: scroll; background-color: #1A1717; height: 100%; color:white ">
-  <h1 class="text-center" style="font-weight: 500; font-size: 24px; margin-bottom:10px ">Create a new event</h1>
+<div class="container-fluid p-3 pt-3" style="overflow-y: scroll; background-color: #1A1717; height: 100%; color:white ">
+  <h1 class="text-center purple" style="font-weight: 500; font-size: 24px; margin-bottom:10px ">Create a new event</h1>
 
   <div class="form-container" style="overflow-y: scroll;">
 
@@ -8,19 +8,19 @@
     <label for="event-title">Event Title</label>
     <input type="text" id="event-title" formControlName="title" placeholder="Event title" required>
   </div>
-  
+
   <div class="form-group">
     <label for="event-description">About the event</label>
     <input type="text" id="event-description" formControlName="description" placeholder="Short preview about the event.." required>
   </div>
-  
+
   <div class="form-group">
     <label for="event-image">Event Image</label>
     <input type="file" id="event-image" formControlName="image_base64" accept="image/*" (change)="onFileSelected($event)">
     <p style="font-size: 10px; font-weight: 200;">Images accepted must be around: 500 x 250</p>
     <img [src]="imagePreview" alt="Event Image" style="max-width: 100%;" *ngIf="imagePreview">
   </div>
-  
+
   <div class="d-flex align-items-center justify-content-between" style="gap:5px">
     <div class="form-group" style="width:100%">
       <label for="ticket-price">Ticket price</label>
@@ -32,24 +32,7 @@
       <input type="number" id="available-seats" formControlName="available_tickets" placeholder="Enter available seats" required>
     </div>
   </div>
-  
-  <div class="d-flex align-items-center justify-content-between" style="gap:5px">
-    <div class="form-group" style="width:100%">
-      <label for="event-type">Event Type</label>
-      <select id="event-type" formControlName="eventType">
-        <option value="public">Public</option>
-        <option value="private">Private</option>
-      </select>
-    </div>
-    
-    <div class="form-group" style="width:100%">
-      <label for="event-location">Event Location</label>
-      <select id="event-location" formControlName="location">
-        <option value="online">Online</option>
-        <option value="offline">Offline</option>
-      </select>
-    </div>
-  </div>
+
 
   <div class="d-flex justify-content-between align-items-center" style="gap:8px">
     <div class="form-group" style="width: 60%;">
@@ -61,97 +44,53 @@
       <input type="time" id="launch-time" formControlName="launch_time" required>
     </div>
   </div>
-  
+
   <div class="form-group">
-    <label for="place">Place</label>
-    <input type="text" id="place" formControlName="place" placeholder="Precise the exact place of the event.." required>
+    <label for="place">Location</label>
+    <input type="text" id="place" formControlName="location" placeholder="Precise the exact place of the event.." required>
   </div>
-  
-  <div class="form-group">
+
+<div class="d-flex align-items-center justify-content-between">
+  <div class="form-group" style="width: 49%;">
     <label for="event-category">Event Category</label>
-    <select id="event-category" formControlName="eventCategory">
-      <option value="Entertainment">Entertainment Events</option>
-      <option value="Cultural">Cultural Events</option>
-      <option value="Sports">Sports Events</option>
-      <option value="Business">Business Events</option>
-      <option value="Social">Social Events</option>
-      <option value="Educational">Educational Events</option>
-      <option value="Charity">Charity and Fundraising Events</option>
-      <option value="Community">Community Events</option>
+    <select id="event-category" formControlName="category" >
+      <option value="movies">Movies</option>
+      <option value="games">Games</option>
+      <option value="parties">Parties</option>
+      <option value="art">Art</option>
+      <option value="meet">Meet</option>
+      <option value="music">Music</option>
+      <option value="education">Education</option>
     </select>
   </div>
-  
-  <div class="form-group">
+
+  <div class="form-group" style="width: 49%;">
     <label for="age-category">Event Age Category</label>
-    <select id="age-category" formControlName="ageCategory">
-      <option value="All Ages">All Ages</option>
-      <option value="Children">Children (0-12 years)</option>
-      <option value="Teenagers">Teenagers (13-19 years)</option>
-      <option value="Young Adults">Young Adults (20-35 years)</option>
-      <option value="Adults">Adults (36-59 years)</option>
-      <option value="Seniors">Seniors (60+ years)</option>
+    <select id="age-category" formControlName="age_category" style="padding-right: 4px;">
+      <option value="everyone">Family</option>
+      <option value="Child">Children</option>
+      <option value="Teen">Teen</option>
+      <option value="young_adult">Young Adults</option>
+      <option value="adult">Adults</option>
+      <option value="senior">Seniors</option>
     </select>
   </div>
-  
-  <div class="form-group">
-    <label for="professional-field">Professional Field</label>
-    <select id="professional-field" formControlName="professionalField">
-      <option value="All peaple are invited">All people are invited</option>
-      <option value="Doctors">Doctors</option>
-      <option value="Engineers">Engineers</option>
-      <option value="Business Professionals">Business Professionals</option>
-      <option value="Lawyers">Lawyers</option>
-      <option value="Teachers/Educators">Teachers/Educators</option>
-      <option value="IT Professionals">IT Professionals</option>
-      <option value="Artists/Creative Professionals">Artists/Creative Professionals</option>
-      <option value="Scientists">Scientists</option>
-      <option value="Accountants/Finance Professionals">Accountants/Finance Professionals</option>
-      <option value="Architects">Architects</option>
-    </select>
+</div>
+
+
+  <div class="d-flex align-items-center justify-content-center form-group" style="width:100%; gap:7px">
+    <label for="agree-terms">Agree to Terms and Conditions</label>
+    <input type="checkbox" id="agree-terms" formControlName="agreeTerms" required>
   </div>
-  
-  <div >
-    <div style="width: 80%; margin:0 auto">
-      <p style="font-size:10px; text-align: center; font-weight: 200;">After event creation, your submission will undergo a review process by our administrators for security and fraud detection purposes. Please anticipate that this approval process may take up to a maximum of 36 hours. Your patience and understanding are greatly appreciated.</p>
-    </div>
-    <div class="d-flex align-items-center justify-content-center form-group" style="width:100%; gap:7px">
-      <label for="agree-terms">Agree to Terms and Conditions</label>
-      <input type="checkbox" id="agree-terms" formControlName="agreeTerms" required>
-    </div>
-  </div>
-  
-  <div class="button-container">
+
+
+  <div class="button-container" style="margin-bottom: 25px;">
     <button type="submit" class="primary-button">Submit your event</button>
     <button type="button" class="secondary-button">Discard event</button>
   </div>
 </form>
+
   </div>
 
   <app-bottom-bar></app-bottom-bar>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -14,11 +14,22 @@ class User(models.Model):
     governorate = models.CharField(max_length=100, null=True)
     is_verified = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
-    cart = models.JSONField(default=dict)
+    cart = models.JSONField(default=list)
     # tickets = models.JSONField()  |||
     #MFA fields
     mfa_enabled = models.BooleanField(default=False) 
     mfa_secret_key = models.CharField(max_length=100, null=True)
+    image_base64 = models.TextField(null=True, blank=True)
+    bookedEvents = models.JSONField(default=dict)  
+    hostedEvents = models.JSONField(default=dict)  
+    tickets = models.JSONField(default=dict) 
+
+    @property
+    def profile_image_data_uri(self):
+        # Generate data URI for displaying the profile image
+        if self.image_base64:
+            return f"data:image/png;base64,{self.image_base64}"
+        return None
 
     def save(self, *args, **kwargs):
         # Hash the password before saving

@@ -9,18 +9,24 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
   loginForm!: FormGroup;
-
+  imagePreview: string | ArrayBuffer | null=null;
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router :Router
-  ) { }
+  ) { 
+    const navigation = this.router.getCurrentNavigation();
+  if (navigation && navigation.extras.state) {
+    this.imagePreview = navigation.extras.state['imagePreview'];
+  }
+  }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
+  
   }
 
   loginUser() {
@@ -36,7 +42,7 @@ export class LoginPage implements OnInit {
           if (isAdmin) {
             this.router.navigate(['./super-user']);
           } else {
-            this.router.navigate(['./home-page']);
+            this.router.navigate(['./home-page'],{ state: { imagePreview: this.imagePreview } });
           }
         },
         error => {
