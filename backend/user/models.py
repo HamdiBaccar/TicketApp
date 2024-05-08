@@ -14,7 +14,7 @@ class User(models.Model):
     governorate = models.CharField(max_length=100, null=True)
     is_verified = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
-    cart = models.JSONField(default=list)
+    cart = models.JSONField(default=dict)
     # tickets = models.JSONField()  |||
     #MFA fields
     mfa_enabled = models.BooleanField(default=False) 

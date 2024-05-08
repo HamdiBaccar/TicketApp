@@ -7,7 +7,7 @@
         <div class="pt-3" style="position: fixed; top: 5px; right: 10px;">
           <img class="mb-1" [src]="userId.image_base64" alt="" routerLink="/user" style="width: 40px; height: 40px; border-radius: 50%;">
         </div>
-        
+
       </div>
     </div>
   </div>
@@ -20,16 +20,16 @@
     <div class="myTickets" style="display:flex; padding:auto 10px ; flex-wrap: wrap; margin-top:15px; justify-content: space-evenly;">
 
       <div class="ticket" *ngFor="let event of bookedEventsDetails" alt="">
-  <img [src]="event.image_base64" class="imgticket" alt="">
-  <div style="color:black; padding:4px 8px">
-    <strong><p style="margin:auto 0;font-size:17px; font-weight:900; margin:2px 0">Event Title : {{ event.title }}</p></strong>
-    <p style="margin:auto 0;font-weight: 300; font-size:15px; margin:2px 0">Date : {{ event.date }}</p>
-    <p style="margin:auto 0; font-size:15px; font-weight: 300;margin:2px 0">At : {{ event.launch_time }}</p>
-    <div style="justify-content: center; display: flex; margin-top:10px">
-      <img src="../../../assets/barcode.png" width="70px" class="barcode" alt="">
-    </div>
-  </div>
-</div>
+        <img [src]="event.image_base64" class="imgticket" alt="">
+        <div style="color:black; padding:4px 8px">
+          <strong><p style="margin:auto 0;font-size:17px; font-weight:900; margin:2px 0">Event Title : {{ event.title }}</p></strong>
+          <p style="margin:auto 0;font-weight: 300; font-size:15px; margin:2px 0">Date : {{ event.date }}</p>
+          <p style="margin:auto 0; font-size:15px; font-weight: 300;margin:2px 0">At : {{ event.launch_time }}</p>
+          <div style="justify-content: center; display: flex; margin-top:10px">
+            <img src="../../../assets/barcode.png" width="70px" class="barcode" alt="">
+          </div>
+        </div>
+      </div>
 
     </div>
   </div>

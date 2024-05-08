@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 from rest_framework import status
 from rest_framework.views import APIView
@@ -32,6 +33,7 @@ class UserRegisterAPIView(APIView):
             serializer.save()
             return Response({"message": "User registered successfully"}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 @csrf_exempt
 def upload_image(request):
     if request.method == 'POST' and request.POST.get('image_base64'):
@@ -51,13 +53,16 @@ def upload_image(request):
         return JsonResponse({'success': 'Image uploaded successfully'})
     else:
         return JsonResponse({'error': 'No image data provided'}, status=400)
+    
 class UserLoginAPIView(APIView):
     def post(self, request):
         email = request.data.get('email')
         password = request.data.get('password')
-
+        print(email)
+        print(password)
         try:
             user = User.objects.get(email=email)
+            print("user password: ",user.password)
         except User.DoesNotExist:
             user = None
 
@@ -65,22 +70,30 @@ class UserLoginAPIView(APIView):
             print("User data:", user.__dict__)
             # Token payload
             payload = {
-            'id': user.pk,    
-            'email': user.email,
+            'id': user.pk,
             'username': user.username,
+            'email': user.email,
+            'password': user.password,  # Note: Be cautious with including hashed passwords in the payload
             'age': user.age,
             'field_of_interest': user.field_of_interest,
             'phone': user.phone,
             'governorate': user.governorate,
             'is_verified': user.is_verified,
             'is_admin': user.is_admin,
-            'cart' : user.cart,
-            'image_base64' : user.image_base64
-            }
+            'cart': user.cart,
+            'image_base64': user.image_base64,
+            'mfa_enabled': user.mfa_enabled,
+            'mfa_secret_key': user.mfa_secret_key,
+            'bookedEvents': user.bookedEvents,
+            'hostedEvents': user.hostedEvents,
+            'tickets': user.tickets
+        }
+
 
 
             # Generate JWT token
             token = jwt.encode(payload, settings.SECRET_KEY, algorithm='HS256')
+            
             return Response({'token': token}, status=status.HTTP_200_OK)
             # return Response({"message": "Login successful"}, status=status.HTTP_200_OK)
         else:
