@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import {environment} from "../../environments/environment";
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-
-  private cartUrl = 'http://localhost:8000/carts/';
+  private hostIp: string = environment.DJANGO_HOST_IP;
+  private cartUrl = `http://${this.hostIp}:8000/carts/`;
 
   constructor(private http: HttpClient) {}
 

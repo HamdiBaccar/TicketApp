@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { Observable } from 'rxjs';
+import {environment} from "../../environments/environment";
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
   constructor(private http: HttpClient) {}
+  private hostIp: string = environment.DJANGO_HOST_IP;
+  private apiUrl = `http://${this.hostIp}:8000/api/list/users/`;
+  private updateUrl = `http://${this.hostIp}:8000/users/`;
+  private url = `http://${this.hostIp}:8000/users/cart`;
 
-  private apiUrl = 'http://localhost:8000/api/list/users/';
-  private updateUrl = 'http://localhost:8000/users/';
-  private url = 'http://localhost:8000/users/cart/';
-  
   getUserDataFromToken(){
     const token = localStorage.getItem('token')
     if (!token) {
@@ -33,18 +34,18 @@ export class UserService {
     return this.http.delete(url);
   }
   getBookedEventsFromUserId(userId: number): Observable<any> {
-    return this.http.get<any>(`http://localhost:8000/api/get_booked_events/${userId}/`);
+    return this.http.get<any>(`http://${this.hostIp}:8000/api/get_booked_events/${userId}/`);
   }
   addToCart(userId: number, eventId: number) {
-    const url = `http://localhost:8000/users/${userId}/add_to_cart/`;
+    const url = `http://${this.hostIp}:8000/users/${userId}/add_to_cart/`;
     return this.http.post(url, { eventId });
   }
   getHostedEventsByUserId(userId: number): Observable<any> {
-    return this.http.get<any>(`http://localhost:8000/api/get_hosted_events/${userId}/`);
+    return this.http.get<any>(`http://${this.hostIp}:8000/api/get_hosted_events/${userId}/`);
   }
   getCartItems(userId: number): Observable<Event[]> {
     const fullUrl = `${this.url}${userId}/`; // Append the userId to the URL
     return this.http.get<Event[]>(fullUrl);
   }
-  
+
   }

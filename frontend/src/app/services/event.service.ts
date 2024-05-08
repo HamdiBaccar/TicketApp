@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import {environment} from "../../environments/environment";
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
+  private hostIp: string = environment.DJANGO_HOST_IP;
 
-  private eventsUrl = 'http://localhost:8000/events/';
-  private apiUrl = 'http://localhost:8000/events/';
-  private CreateEventUrl = 'http://localhost:8000/create/events/'
+  private eventsUrl = `http://${this.hostIp}:8000/events/`;
+  private apiUrl = `http://${this.hostIp}:8000/events/`;
+  private CreateEventUrl = `http://${this.hostIp}:8000/create/events/`;
+
 
 
   constructor(private http: HttpClient) { }

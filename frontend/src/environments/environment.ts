@@ -3,8 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: true,
+  DJANGO_HOST_IP: 'localhost' // 'localhost' if server running locally 'ip address' if server running on LAN
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

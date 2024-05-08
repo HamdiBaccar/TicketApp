@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-2l5g800q_*#%9riqwb(0g)=4wdxt4(%)qx6+9j1+w+x70f4_4l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -91,10 +92,10 @@ DATABASES = {
         'NAME': 'ticketflip',  
         'ENFORCE_SCHEMA': False,  
         'CLIENT': {
-            'host': 'localhost',  
-            'port': 27017,        
+            'host': 'localhost',  # name of the mongo container else change to localhost to run django locally
+            'port': 27017,
         }
-    }
+    }    
 }
 
 
@@ -157,7 +158,9 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_ALL_HEADERS=True
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:8100',
+    'http://localhost:3030', 'http://localhost:8000',
+    'http://localhost:8100', 'http://app:8100', 
+    'http://django:8000'
 ]
 CORS_ALLOW_METHODS = [
     'GET',

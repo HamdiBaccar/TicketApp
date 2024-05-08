@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import {environment} from "../../environments/environment";
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:8000/api/auth/'; // Replace this with your Django backend URL
+  private hostIp: string = environment.DJANGO_HOST_IP;
+
+  private baseUrl = `http://${this.hostIp}:8000/api/auth/`;
 
   constructor(private http: HttpClient,private jwtHelper: JwtHelperService) { }
 

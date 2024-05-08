@@ -1,0 +1,46 @@
+services:
+    django:
+        build:
+            context: .
+            dockerfile: ./backend/Dockerfile
+        container_name: django
+        ports:
+            - "8000:8000"
+        volumes:
+            - "./backend:/django"
+        networks:
+            - default
+    mongo:
+        image: mongo
+        container_name: mongo
+        restart: always
+        ports:
+            - "3030:27017"
+        volumes:
+            - ./db_mongo:/data/db
+        networks:
+            - default
+    mongo-express:
+        image: mongo-express
+        container_name: mongo-express
+        restart: always
+        ports:
+            - "8081:8081"
+        environment:
+            - ME_CONFIG_MONGODB_SERVER=mongo
+            - ME_CONFIG_MONGODB_PORT=27017
+        depends_on:
+            - mongo
+        networks:
+            - default
+    app:
+        build:
+            dockerfile: ./frontend/Dockerfile
+        ports:
+            - "8100:8100"
+        volumes:
+            - "./frontend/src:/usr/src/frontend/src:delegated"
+           # - "/frontend/node_modules:/usr/src/frontend/node_modules"
+networks:
+    default:
+        name: mongodb_network
